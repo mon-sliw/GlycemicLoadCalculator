@@ -1,6 +1,8 @@
 package pl.mis.glycemicloadcalculator.service;
 
 import pl.mis.glycemicloadcalculator.entity.Product;
+import pl.mis.glycemicloadcalculator.mapper.OneProductRequest;
+import pl.mis.glycemicloadcalculator.mapper.OneProductResponse;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,4 +18,6 @@ public interface CalculatorService {
     Optional<Product> getProductById(Long productId);
 
     List<Product> getAllProducts();
+
+    OneProductResponse calculateOneProduct(OneProductRequest request);
 }
