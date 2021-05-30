@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.mis.glycemicloadcalculator.entity.Product;
+import pl.mis.glycemicloadcalculator.mapper.MultipleProductsRequest;
+import pl.mis.glycemicloadcalculator.mapper.MultipleProductsResponse;
 import pl.mis.glycemicloadcalculator.mapper.OneProductRequest;
 import pl.mis.glycemicloadcalculator.mapper.OneProductResponse;
 import pl.mis.glycemicloadcalculator.service.CalculatorService;
@@ -60,5 +62,10 @@ public class CalculatorController {
         if (response == null)
             return ResponseEntity.notFound().build();
         return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/calculate-multiple")
+    public ResponseEntity<MultipleProductsResponse> calculateMultipleProducts(@RequestBody MultipleProductsRequest request){
+        return ResponseEntity.ok(service.calculateMultipleProducts(request));
     }
 }

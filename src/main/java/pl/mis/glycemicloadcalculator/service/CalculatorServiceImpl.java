@@ -3,6 +3,8 @@ package pl.mis.glycemicloadcalculator.service;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.mis.glycemicloadcalculator.entity.Product;
+import pl.mis.glycemicloadcalculator.mapper.MultipleProductsRequest;
+import pl.mis.glycemicloadcalculator.mapper.MultipleProductsResponse;
 import pl.mis.glycemicloadcalculator.mapper.OneProductRequest;
 import pl.mis.glycemicloadcalculator.mapper.OneProductResponse;
 import pl.mis.glycemicloadcalculator.repository.ProductRepository;
@@ -60,5 +62,19 @@ public class CalculatorServiceImpl implements CalculatorService {
             return new OneProductResponse(product, request);
         }
         return null;
+    }
+
+    @Override
+    public MultipleProductsResponse calculateMultipleProducts(MultipleProductsRequest multipleProductsRequest) {
+        MultipleProductsResponse response = new MultipleProductsResponse();
+        multipleProductsRequest.getProducts().forEach(
+                request -> {
+                    repository.findById(request.getProductId())
+                            .map(product -> {
+                                response.add(product, request);
+                                return product;
+                            });
+                });
+        return response;
     }
 }

@@ -1,6 +1,8 @@
 package pl.mis.glycemicloadcalculator.service;
 
 import pl.mis.glycemicloadcalculator.entity.Product;
+import pl.mis.glycemicloadcalculator.mapper.MultipleProductsRequest;
+import pl.mis.glycemicloadcalculator.mapper.MultipleProductsResponse;
 import pl.mis.glycemicloadcalculator.mapper.OneProductRequest;
 import pl.mis.glycemicloadcalculator.mapper.OneProductResponse;
 
@@ -20,4 +22,6 @@ public interface CalculatorService {
     List<Product> getAllProducts();
 
     OneProductResponse calculateOneProduct(OneProductRequest request);
+
+    MultipleProductsResponse calculateMultipleProducts(MultipleProductsRequest multipleProductsRequest);
 }
