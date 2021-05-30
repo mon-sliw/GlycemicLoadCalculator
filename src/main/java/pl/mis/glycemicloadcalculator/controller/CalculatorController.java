@@ -58,7 +58,7 @@ public class CalculatorController {
     public ResponseEntity<?> calculateOneProduct(@RequestBody OneProductRequest request) {
         OneProductResponse response = service.calculateOneProduct(request);
         if (response == null)
-            return null;
+            return ResponseEntity.notFound().build();
         return ResponseEntity.ok(response);
     }
 }
