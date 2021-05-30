@@ -6,19 +6,19 @@ import pl.mis.glycemicloadcalculator.entity.Product;
 @Data
 public class OneProductResponse {
 
-    Long productId;
+    private Long productId;
 
-    Double quantity;
+    private Double quantity;
 
-    String englishName;
+    private String englishName;
 
-    String polishName;
+    private String polishName;
 
-    Double glycemicIndex;
+    private Double glycemicIndex;
 
-    Double carbohydrate;
+    private Double carbohydrate;
 
-    Double glycemicLoad;
+    private Double glycemicLoad;
 
     public OneProductResponse(Product product, OneProductRequest request) {
         this.productId = product.getId();
